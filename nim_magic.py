@@ -1,42 +1,41 @@
 """
 nim_magic.py
-Jupyter cell magic for your favorite programming language.
+Nim cell magic for JupyterLab or Juypter Python Notebooks.
 
-Requirements: Nim (https://nim-lang.org), nimpy (`nimble install nimpy`, thanks to @yglukhov for this great library!)
+Write Nim modules and use the compiled code directly in the Notebook as extension modules for the Python kernel (similar to e.g. %%cython, but for your favorite language :-P ). It builds on @yglukhov 's awesome [nimpy](https://github.com/yglukhov/nimpy) library.
 
-Just put this file in some Python import dir
+## Requirements
+* A [Nim](https://nim-lang.org) compiler in your path
+* [nimpy](https://github.com/yglukhov/nimpy) package (`nimble install nimpy`)
 
-and then, in a Jupyter or JLab Notebook:
+## Installation
+Just put the file nim_magic.py somewhere in Python's import path.
 
+## Example
+In a JupyterLab or Jupyter Notebook:
+
+```Python
 # In [1]:
-    %load_ext nim_magic
+%load_ext nim_magic
 
 
 # In [2]:
-    %%nim -d:release
-    proc greet(name: string): string {.exportpy.} =
-        return "Hello, " & name & "!"
+%%nim -d:release
+proc greet(name: string): string {.exportpy.} =
+    return "Hello, " & name & "!"
 
 
 # In [3]:
-    greet("World")
-    
+greet("World")
+
 
 # Out [3]:
-    'Hello, World!'
+'Hello, World!'
 
 
 # In [4] (this will remove temporary dirs created by nim_magic):
-    %nim_clear
-
-
-CHANGES: All symbols from the extension module are now imported 
-    into the current namespace.
-    This was necessary to enable re-import after recompilation.
-    To achieve this, each compiled module gets an arbitrary new name.
-    All generated files are now put in the dir `nimmagic`.
-    This dir can be removed manually or with the special line magic command: `%nim_clear`in a Notebook cell
-
+%nim_clear
+```
 """
 
 import os
@@ -44,7 +43,7 @@ import shutil
 import sys
 import time
 import subprocess as sp
-from IPython.core.magic import (Magics, magics_class, 
+from IPython.core.magic import (Magics, magics_class,
                                 line_magic, cell_magic)
 
 
@@ -60,11 +59,11 @@ class NimMagics(Magics):
 
     @cell_magic
     def nim(self, options, code):
-        """`options` can be left empty or contain further compile options, e.g. "-d:release" 
+        """`options` can be left empty or contain further compile options, e.g. "-d:release"
         (separated by space).
-        
+
         Example:
-        
+
         %%nim -d:release
         <code to compile in release mode>"""
         if not os.path.isdir("nimmagic"):
