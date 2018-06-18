@@ -9,7 +9,7 @@ Write Nim modules and use the compiled code directly in the Notebook as extensio
 * [nimpy](https://github.com/yglukhov/nimpy) package (`nimble install nimpy`)
 
 ## Installation
-Just put the file nim_magic.py somewhere in Python's import path.
+Just put the file `nim_magic.py` somewhere in Python's import path.
 
 ## Example
 In a JupyterLab or Jupyter Notebook:
