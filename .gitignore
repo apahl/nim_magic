@@ -1,0 +1,6 @@
+nimmagic/
+nimcache/
+.ipynb_checkpoints/
+.vscode/
+__pycache__/
+nimsuggest.*
