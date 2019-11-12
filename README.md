@@ -40,4 +40,4 @@ greet("World")
 Further examples can be found [here](examples.ipynb).
 
 And there are some gists, too:
-* [Accelerating Pearson](https://gist.github.com/apahl/d673b0033794cc5f9514de639285592b): Direct access Numpy arrays.
+* [Accelerating Pearson](https://gist.github.com/apahl/d673b0033794cc5f9514de639285592b): Directly accessing Numpy arrays.
