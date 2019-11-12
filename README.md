@@ -12,7 +12,7 @@ Write Nim modules and use the compiled code directly in the Notebook as extensio
 Just put the file `nim_magic.py` somewhere in Python's import path, e.g. in one of the dirs that is printed by: `python3 -c "import sys; print(sys.path)"`.
 
 ## Example
-In a JupyterLab or Jupyter Notebook:
+In a JupyterLab or Jupyter Notebook running a Python3 kernel:
 
 ```Python
 # In [1]:
@@ -38,3 +38,6 @@ greet("World")
 ```
 
 Further examples can be found [here](examples.ipynb).
+
+And there are some gists, too:
+* [Accelerating Pearson](https://gist.github.com/apahl/d673b0033794cc5f9514de639285592b): Direct access Numpy arrays.
