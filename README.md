@@ -1,6 +1,6 @@
 # nim_magic
 
-Nim cell magic for JupyterLab or Juypter Python Notebooks.
+Nim cell magic for JupyterLab or Jupyter Python Notebooks.
 
 Write Nim modules and use the compiled code directly in the Notebook as extension modules for the Python kernel (similar to e.g. %%cython, but for your favorite language :P ). It builds on @yglukhov 's awesome [nimpy](https://github.com/yglukhov/nimpy) library. 
 
